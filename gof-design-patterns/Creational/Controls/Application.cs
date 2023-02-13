@@ -17,6 +17,7 @@ global using PlantioClassLibrary.Basics.Volatile;
 global using Creational.Catalog.Singleton;
 
 global using Spectre.Console;
+using Creational.Catalog.Prototype;
 
 namespace Creational.Controls
 {
@@ -25,7 +26,7 @@ namespace Creational.Controls
 
         public async Task Run()
         {
-            await RunSingleton();
+            await RunPrototype();
         }
 
 
@@ -44,6 +45,29 @@ namespace Creational.Controls
 
                 AnsiConsole.Write(new Markup(AlternativeStock.GetSomeInformation()));
                 AnsiConsole.Write(new Markup(AlternativeStockSingleton.GetSomeInformation()));
+
+            });
+        }
+
+
+        public async Task RunPrototype()
+        {
+            await Task.Run(() =>
+            {
+                // Creating objects;
+                SomeNewFinance money = new("Hello world!", 1_000, new("USD", "$"));
+                SomeNewFinance money1 = new();
+                money1 = (SomeNewFinance)money.Clone();
+                AnsiConsole.Write(new Markup("Two objects have been created. Checking if they are clones...\n\n"));
+
+                // Checking them for the differences;
+                bool unitsAreEqual = money1.GetMeta().Equals(money.GetMeta());
+                bool linksAreEqual = money1 == money;
+
+                if (unitsAreEqual && !linksAreEqual)
+                {
+                    AnsiConsole.Write(new Markup("[green on black]Success! The objects are identical although the links are different.[/]\n"));
+                }
 
             });
         }
