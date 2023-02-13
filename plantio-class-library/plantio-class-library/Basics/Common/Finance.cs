@@ -1,6 +1,6 @@
 ﻿namespace PlantioClassLibrary.Basics.Common
 {
-    public class Finance
+    public class Finance : ICloneable
     {
 
 
@@ -20,6 +20,20 @@
         {
             get { return _currency; }
             set { _currency = value; }
+        }
+
+
+
+        public override string ToString()
+        {
+            return $"{Math.Round(Amount, 2)}{Currency?.Symbols}";
+        }
+
+
+        public object Clone()
+        {
+            Finance result = new Finance(Amount, (Currency)Currency.Clone());
+            return result;
         }
 
 

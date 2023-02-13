@@ -1,4 +1,5 @@
 ﻿using PlantioClassLibrary.Basics.Commodity;
+using PlantioClassLibrary.Basics.Common;
 
 namespace PlantioClassLibrary.Basics.Commodity
 {
@@ -50,6 +51,24 @@ namespace PlantioClassLibrary.Basics.Commodity
 
 
 
+        #region API
+
+
+
+        public override object Clone()
+        {
+            CommodityPackage result = new CommodityPackage(IsIncomplete, (CommodityType)CommodityType.Clone(), BasicType, Volume, (Finance)Price.Clone());
+            return result;
+        }
+
+
+
+        #endregion API
+
+
+
+
+
         #region Construction
 
 
@@ -65,6 +84,7 @@ namespace PlantioClassLibrary.Basics.Commodity
             _commodityType = null;
             BasicType = BasicCommodityType.Unknown;
             Volume = 0.0;
+            Price = null;
         }
 
 
@@ -74,12 +94,13 @@ namespace PlantioClassLibrary.Basics.Commodity
         /// <br />
         /// Параметризованный конструктор.
         /// </summary>
-        public CommodityPackage(bool isIncomplete, CommodityType advancedType, BasicCommodityType basciType, double volume) : base()
+        public CommodityPackage(bool isIncomplete, CommodityType advancedType, BasicCommodityType basciType, double volume, Finance? price) : base()
         {
             _commodityType = advancedType;
             BasicType = basciType;
             _isIncomplete = isIncomplete;
             Volume = volume;
+            Price = price;
         }
 
 

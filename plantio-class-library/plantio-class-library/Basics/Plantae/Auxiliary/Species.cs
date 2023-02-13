@@ -1,31 +1,41 @@
-﻿namespace PlantioClassLibrary.Basics.Commodity
+﻿namespace PlantioClassLibrary.Basics.Plantae.Auxiliary
 {
-    /// <summary>
-    /// The type of the commodity. E.g. 'turf', 'dirt' etc.
-    /// <br />
-    /// Тип сырья. Например, "торф", "почва" и т.д.
-    /// </summary>
-    public class CommodityType : ICloneable
+    public class Species : ICloneable
     {
 
 
-        private string _name;
+        #region State
 
 
+        private string? _name;
 
-        public string Name
+
+        public string? Name
         {
             get { return _name; }
             set { _name = value; }
         }
 
 
+        #endregion State
+
+
+
+        #region API
+
 
         public object Clone()
         {
-            CommodityType result = new CommodityType(Name);
+            Species result = new(Name);
             return result;
         }
+
+
+        #endregion API
+
+
+
+        #region Construction
 
 
 
@@ -34,9 +44,9 @@
         /// <br />
         /// Конструктор по умолчанию.
         /// </summary>
-        public CommodityType()
+        public Species()
         {
-            _name = string.Empty;
+            _name = null;
         }
 
 
@@ -45,10 +55,14 @@
         /// <br />
         /// Параметризованный конструктор.
         /// </summary>
-        public CommodityType(string name)
+        public Species(string name)
         {
             _name = name;
         }
+
+
+        #endregion Construction
+
 
     }
 }

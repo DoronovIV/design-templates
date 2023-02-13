@@ -2,16 +2,13 @@
 
 namespace PlantioClassLibrary.Basics.Items
 {
-    public interface IContainer
+    public interface IContainer : ICloneable, ITradable
     {
 
         public string? GetName();
 
 
         public BasicContainerType GetBasicContainerType();
-
-
-        public Finance? GetPrice();
 
     }
 }

@@ -1,4 +1,7 @@
-﻿namespace PlantioClassLibrary.Basics.Commodity
+﻿using PlantioClassLibrary.Basics.Common;
+using System.Collections.Generic;
+
+namespace PlantioClassLibrary.Basics.Commodity
 {
     public class CommodityMass : AbstractCommodity
     {
@@ -30,6 +33,24 @@
 
 
 
+        #region API
+
+
+
+        public override object Clone()
+        {
+            CommodityMass result = new CommodityMass(new (CommodityTypes), Volume, BasicType, (Finance)Price.Clone());
+            return result;
+        }
+
+
+
+        #endregion API
+
+
+
+
+
         #region Construction
 
 
@@ -44,6 +65,7 @@
             CommodityTypes = null;
             Volume = 0;
             BasicType = BasicCommodityType.Unknown;
+            Price = null;
         }
 
 
@@ -53,11 +75,23 @@
         /// <br />
         /// Параметризованный конструктор.
         /// </summary>
-        public CommodityMass(List<CommodityType> advancedTypes, double approximateVolume, BasicCommodityType basicType)
+        public CommodityMass(List<CommodityType> advancedTypes, double approximateVolume, BasicCommodityType basicType) : this()
         {
             CommodityTypes = advancedTypes;
             Volume = approximateVolume;
             BasicType = basicType;
+        }
+
+
+
+        /// <summary>
+        /// Parametrized constructor.
+        /// <br />
+        /// Параметризованный конструктор.
+        /// </summary>
+        public CommodityMass(List<CommodityType> advancedTypes, double approximateVolume, BasicCommodityType basicType, Finance price) : this(advancedTypes, approximateVolume, basicType)
+        {
+            Price = price;
         }
 
 

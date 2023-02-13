@@ -1,6 +1,6 @@
 ﻿namespace PlantioClassLibrary.Basics.Common
 {
-    public class Currency
+    public class Currency : ICloneable
     {
 
         /// <inheritdoc cref="Code"/>
@@ -34,6 +34,16 @@
             get { return _symbols; }
             set { _symbols = value; }
         }
+
+
+
+
+        public object Clone()
+        {
+            Currency result = new Currency(Code, Symbols);
+            return result;
+        }
+
 
 
 

@@ -3,7 +3,7 @@ using PlantioClassLibrary.Basics.Common;
 
 namespace PlantioClassLibrary.Basics.Commodity
 {
-    public abstract class AbstractCommodity
+    public abstract class AbstractCommodity : ITradable, ICloneable
     {
 
 
@@ -31,12 +31,10 @@ namespace PlantioClassLibrary.Basics.Commodity
         public virtual BasicCommodityType BasicType { get; set; }
 
 
-        /// <summary>
-        /// The price of the commodity.
-        /// <br />
-        /// Стоимость сырья.
-        /// </summary>
         public virtual Finance? Price { get; set; }
+
+
+        public abstract object Clone();
 
 
     }

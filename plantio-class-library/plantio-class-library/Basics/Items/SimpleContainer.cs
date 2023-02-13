@@ -10,14 +10,14 @@ namespace PlantioClassLibrary.Basics.Items
 
 
         /// <inheritdoc cref="IContainer.GetName"/>
-        private string? _name;
+        private string? name;
 
 
         /// <inheritdoc cref="IContainer.GetBasicContainerType"/>
         private BasicContainerType _basicType;
 
-        /// <inheritdoc cref="IContainer.GetPrice"/>
-        private Finance? _price;
+        public Finance? Price { get; set ; }
+
 
 
         #endregion State
@@ -36,12 +36,13 @@ namespace PlantioClassLibrary.Basics.Items
 
         public string? GetName()
         {
-            return _name;
+            return name;
         }
 
-        public Finance? GetPrice()
+        public object Clone()
         {
-            return _price;
+            SimpleContainer result = new SimpleContainer(name, _basicType, (Finance)Price.Clone());
+            return result;
         }
 
 
@@ -63,9 +64,9 @@ namespace PlantioClassLibrary.Basics.Items
         /// </summary>
         public SimpleContainer()
         {
-            _name = null;
+            name = null;
             _basicType = BasicContainerType.Unknown;
-            _price = null;
+            Price = null;
         }
 
 
@@ -77,9 +78,9 @@ namespace PlantioClassLibrary.Basics.Items
         /// </summary>
         public SimpleContainer(string name, BasicContainerType type, Finance price)
         {
-            _name = name;
+            this.name = name;
             _basicType = type;
-            _price = price;
+            Price = price;
         }
 
 
