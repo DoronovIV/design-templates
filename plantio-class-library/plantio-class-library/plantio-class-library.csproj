@@ -6,6 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AssemblyName>$(MSBuildProjectName)</AssemblyName>
+    <BaseOutputPath>bin\</BaseOutputPath>
   </PropertyGroup>
 
 </Project>
