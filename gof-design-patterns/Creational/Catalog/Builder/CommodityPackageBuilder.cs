@@ -61,7 +61,7 @@
 
         public void SetMass(double mass)
         {
-            //objectBuilt.Mass = mass;
+            objectBuilt.Mass = mass;
         }
 
 

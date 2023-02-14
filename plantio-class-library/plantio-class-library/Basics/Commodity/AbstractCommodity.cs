@@ -10,7 +10,7 @@ namespace PlantioClassLibrary.Basics.Commodity
         /// <summary>
         /// The volume value of the commodity.
         /// <br />
-        /// Показатель массы сырья.
+        /// Показатель объёма сырья.
         /// </summary>
         public virtual double Volume { get; set; }
 
