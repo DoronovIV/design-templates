@@ -34,7 +34,7 @@ namespace Creational.Catalog.Builder
         /// <br />
         /// Валюта для конфигурирования цен.
         /// </summary>
-        private Currency currency;
+        private Currency? currency;
 
 
         #endregion State
@@ -53,22 +53,58 @@ namespace Creational.Catalog.Builder
         {
             if (basicType is not BasicCommodityType.Unknown)
             {
-                throw new NotImplementedException();
+                switch (basicType) 
+                {
+                    case BasicCommodityType.Fertilizer:
+                        return GetFertilizer();
+
+
+                    case BasicCommodityType.Soil:
+                        return GetSoil();
+
+
+                    default: return null;
+                }
             }
 
             else return null;
         }
 
 
+        /// <summary>
+        /// Get the fertilizer commodity package.
+        /// <br />
+        /// Получить пакет сырья удобрения.
+        /// </summary>
         public CommodityPackage GetFertilizer()
         {
             basicType = BasicCommodityType.Fertilizer;
 
-            builder.SetPrice(new(600, currency));
+            builder.SetPrice(new (600, currency));
             builder.SetBasicType(basicType);
             builder.SetManufacturers(new(new Manufacturer[] { new Manufacturer("Renk", new("Germany")) }));
-            builder.SetVolume(50);
+            builder.SetMass(0.020d);
 
+            return (CommodityPackage)builder.GetProduct();
+        }
+
+
+        /// <summary>
+        /// Get the soil commodity package.
+        /// <br />
+        /// Получить пакет сырья почвы.
+        /// </summary>
+        public CommodityPackage GetSoil()
+        {
+            basicType = BasicCommodityType.Soil;
+
+            builder.SetPrice(new (2000, currency));
+            builder.SetBasicType(basicType);
+            builder.SetManufacturers(new(new Manufacturer[] { new Manufacturer("Renk", new("Germany")) }));
+            builder.SetMass(10.0d);
+            builder.SetVolume(11.5d);
+
+            return (CommodityPackage)builder.GetProduct();
         }
 
 

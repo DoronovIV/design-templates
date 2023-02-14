@@ -59,6 +59,12 @@
         }
 
 
+        public void SetMass(double mass)
+        {
+            //objectBuilt.Mass = mass;
+        }
+
+
         #endregion API
 
 
@@ -74,7 +80,7 @@
         /// </summary>
         public CommodityPackageBuilder()
         {
-
+            objectBuilt = new();
         }
 
 

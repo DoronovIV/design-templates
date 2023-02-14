@@ -22,6 +22,14 @@ namespace Creational.Catalog.Builder
 
 
         /// <summary>
+        /// Set the commodity mass value.
+        /// <br />
+        /// Задать показатель массы сырья.
+        /// </summary>
+        public void SetMass(double mass);
+
+
+        /// <summary>
         /// Set the list of manufacturers.
         /// <br />
         /// Задать список производителей.
