@@ -31,7 +31,7 @@ namespace Creational.Controls
 
         public async Task Run()
         {
-            IPerformable pattern = new BuilderPerformer();
+            IPerformable pattern = new AbstractMethodPerformer();
             await pattern.Run();
         }
 
