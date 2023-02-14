@@ -8,9 +8,20 @@ namespace Creational.Performance
     {
         public async Task Run()
         {
-            LegalPayment payment = new (10_000, new ("RUB", "P"));
-            payment = payment.Convert(new ("USD", "$"));
-            Console.WriteLine(payment.Amount);
+            Console.WriteLine("App: Launched with the Liquid Mass Creator.");
+            OuterCode(new LiquidCommodityMassCreator());
+
+            Console.WriteLine("");
+
+            Console.WriteLine("App: Launched with the Solid Mass Creator.");
+            OuterCode(new SolidCommodityMassCreator());
+        }
+
+
+        public void OuterCode(AbstractCreator creator)
+        {
+            AnsiConsole.Write(new Markup("Client: I'm not aware of the creator's class," +
+    "but it still works.\n" + creator.Announce() + "\n"));
         }
     }
 }
