@@ -16,6 +16,14 @@ namespace PlantioClassLibrary.Basics.Commodity
 
 
         /// <summary>
+        /// The net mass of the commodity.
+        /// <br />
+        /// Масса нетто сырья.
+        /// </summary>
+        public virtual double Mass { get; set; }
+
+
+        /// <summary>
         /// The list of manufacturers of the commodity.
         /// <br />
         /// Список производителей сырья.

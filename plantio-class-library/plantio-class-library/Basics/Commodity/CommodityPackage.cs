@@ -57,7 +57,7 @@ namespace PlantioClassLibrary.Basics.Commodity
 
         public override object Clone()
         {
-            CommodityPackage result = new CommodityPackage(IsIncomplete, (CommodityType)CommodityType.Clone(), BasicType, Volume, (Finance)Price.Clone());
+            CommodityPackage result = new CommodityPackage(IsIncomplete, (CommodityType)CommodityType.Clone(), BasicType, Volume, Mass, (Finance)Price.Clone());
             return result;
         }
 
@@ -84,6 +84,7 @@ namespace PlantioClassLibrary.Basics.Commodity
             _commodityType = null;
             BasicType = BasicCommodityType.Unknown;
             Volume = 0.0;
+            Mass = 0.0;
             Price = null;
         }
 
@@ -94,7 +95,7 @@ namespace PlantioClassLibrary.Basics.Commodity
         /// <br />
         /// Параметризованный конструктор.
         /// </summary>
-        public CommodityPackage(bool isIncomplete, CommodityType advancedType, BasicCommodityType basciType, double volume, Finance? price) : base()
+        public CommodityPackage(bool isIncomplete, CommodityType advancedType, BasicCommodityType basciType, double volume, double mass, Finance? price) : base()
         {
             _commodityType = advancedType;
             BasicType = basciType;
